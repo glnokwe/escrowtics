@@ -1,0 +1,26 @@
+{
+    "name": "dell/escrowtics",
+    "description": "Safe Peer-to-Peer Escrow Payment Wordpress Plugin",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "LechTech",
+            "email": "info@lechtech.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "itsjavi/bootstrap-colorpicker": "*",
+        "chillerlan/php-qrcode": "v5.0.x-dev"
+    },
+	"autoload": {
+		"psr-4": {"Escrowtics\\": "./includes"}, 
+		"files": [
+					"includes/base/helper.php", 
+				    "includes/base/logs-notifications.php",
+					"includes/email/emails.php"
+				  ]
+	}
+	
+}

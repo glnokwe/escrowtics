@@ -1,0 +1,30 @@
+<?php $invoice_url = explode("?", esc_url(escrot_current_url()))[0]; ?>
+	<div class="escrot-login-wrap p-4 p-lg-5">
+		<div class="d-flex">
+			<div class="w-100">
+				<h3 class="mb-4">Deposit via BitCoin</h3>
+				<small><b>DEPOSIT AMOUNT (1 - 20000) USD <br> Charged 1 USD + 0.5 % </b></small>
+			</div>
+		</div>
+		<div style="color: red;" id="escrot-bitcoin-deposit-error"></div>
+		<form enctype="multi-part/form-data" id="escrot-bitcoin-deposit-form" data-invoice-url="<?php echo $invoice_url; ?>" >
+		    <input type="hidden" name="action" value="escrot_generate_bitcoin_deposit_invoice">
+			<?php wp_nonce_field('escrot_deposit_invoice_nonce', 'nonce'); ?>
+			<div class="form-group mb-3">
+				<label class="label" for="amount"><?php echo __("Amount", "escrowtics"); ?></label>
+				<input type="number" class="form-control text-dark" name="amount" 
+				placeholder="<?php echo __('Enter Amount', 'escrowtics'); ?>" required >
+			</div><br>
+			
+			<button type="submit" class="btn escrot-btn-primary text-white" id="escrot-bitcoin-pay-btn">
+			<?php echo __("Confirm Deposit", "escrowtics"); ?></button>
+			<?php if(ESCROT_PLUGIN_INTERACTION_MODE == "modal"){ ?>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __("Cancel", "escrowtics"); ?></button> 
+			<?php } else { ?>
+				<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#escrot-bitcoin-deposit-form-dialog">
+					<?php echo __("Close Form", "escrowtics"); ?>
+			</button> 
+			<?php } ?>
+		</form>
+	</div>
+				

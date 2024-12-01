@@ -1,0 +1,80 @@
+<?php
+	
+	
+	    //Escrow Info Form Fields
+		
+        $fields  = [ 
+		
+			'Ajax Action'           => [ 
+											'id' => 'EscrotEscrowAjaxAction', 
+											'name' => 'action', 
+											'type' => 'hidden',  
+											'placeholder' => '',  
+											'div-class' => 'col-md-12', 
+											'callback' => 'escrot_insert_escrow',
+											'display' => false,
+											'help-info' => '', 
+											'required' => false
+										  
+							            ],
+			'Ajax Nonce'            =>  [ 
+											'id' => 'EscrotEscrowAjaxNonce', 
+											'name' => 'nonce', 
+											'type' => 'hidden',  
+											'placeholder' => '',  
+											'div-class' => 'col-md-12', 
+											'callback' => wp_create_nonce( 'escrot_escrow_nonce' ),
+											'display' => false,
+										    'help-info' => '', 
+											'required' => false
+							            ],
+			'Escrow ID'              =>  [ 
+			                                'id' => 'EscrotEscrowID', 
+			                                'name' => 'escrow_id', 
+										    'type' => 'hidden',  
+			                                'placeholder' => '',  
+										    'div-class' => 'col-md-12', 
+                                            'callback' => '',
+										    'display' => false,
+										    'help-info' => '', 
+											'required' => false
+							            ],
+            'Ref ID'                =>  [ 
+			                                'id' => 'EscrotEscrowRefID', 
+			                                'name' => 'ref_id', 
+										    'type' => 'hidden',  
+			                                'placeholder' => '',  
+										    'div-class' => 'col-md-12', 
+                                            'callback' => '',
+											'display' => false,
+										    'help-info' => '', 
+											'required' => false
+							            ],
+			'User (Payer)'      	=>  [ 
+			                                'id' => 'EscrotEscrowPayer', 
+			                                'name' => 'payer', 
+										    'type' => is_escrot_front_user()? 'text' : 'select',  
+			                                'placeholder' => '',  
+										    'div-class' => is_escrot_front_user()? 'col-md-12' : 'col-md-6',
+                                            'callback' => is_escrot_front_user()? '' : escrot_users(),
+											'display' => is_escrot_front_user()?  false : true,
+										    'help-info' => '', 
+											'required' => is_escrot_front_user()?  false : true,
+                                        										  
+							            ],							
+			'User (Earner)'      	=>  [ 
+			                                'id' => 'EscrotEscrowEarner', 
+			                                'name' => 'earner', 
+										    'type' => is_escrot_front_user()? 'text' : 'select',  
+			                                'placeholder' => 'Enter Earner Username',  
+										    'div-class' => is_escrot_front_user()? 'col-md-12' : 'col-md-6',
+                                            'callback' => is_escrot_front_user()? '' : escrot_users(),
+											'display' => true,
+										    'help-info' => '', 
+											'required' => true
+                                        										  
+							            ]				
+										
+	    ];
+		
+		include ESCROT_PLUGIN_PATH."templates/forms/form-fields/form-fields-manager.php";

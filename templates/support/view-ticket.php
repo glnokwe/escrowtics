@@ -30,14 +30,14 @@ id="escrot-admin-area-title">
 	    <h4> 
 			<span class="escrot-tbl-header">
 				<b><?= __("Ticket", "escrowtics"); ?> #: </b> 
-				<span class="text-secondary"><?= $data["ref_id"]; ?></span> &nbsp; || &nbsp;
+				<span class="text-secondary"><?= $data["ref_id"]; ?></span> &nbsp; :: &nbsp;
 				<b><?= __("Department", "escrowtics"); ?>: </b> 
-				<span class="text-secondary"><?= $data["department"]; ?></span> &nbsp; || &nbsp;
+				<span class="text-secondary"><?= $data["department"]; ?></span> &nbsp; :: &nbsp;
 				<b><?= __("User", "escrowtics"); ?>: </b> 
 				<span class="text-secondary"><?= $data["user"]; ?></span> 
-				&nbsp; || &nbsp;
+				&nbsp; :: &nbsp;
 				<b><?= __("Priority", "escrowtics"); ?>: </b> 
-				<span class="text-secondary"><?= $data["priority"]; ?></span> &nbsp;|| &nbsp;
+				<span class="text-secondary"><?= $data["priority"]; ?></span> &nbsp;:: &nbsp;
 				<b><?= __("Status", "escrowtics"); ?>: </b> 
 				<span class="text-secondary"><?= $status; ?></span> 
 				<a href="#" class="text-success escrot-update-ticket-status" title="Edit Status" id="<?= $ticket_id; ?>" 

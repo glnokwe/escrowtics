@@ -275,137 +275,192 @@ function escrot_minify_count($count) {
 
 //dsiplay chart and table stats
 function escrot_stat_chart_tbl($col_class, $color, $icon, $title, $subtitle, $type, $count, $id, $box_ht) {
-	$output ='';
-	$output .='
-	  <div class="'.$col_class.'">
+	ob_start();
+	?>
+	<div class="<?php echo esc_attr($col_class); ?>">
 		<div class="card card-chart">
-			<div class="card-header card-header-icon card-header-'.$color.'">
+			<div class="card-header card-header-icon card-header-<?php echo esc_attr($color); ?>">
 				<div class="card-icon">
-				   <i class="fas fa-'.$icon.'"></i>
+					<i class="fas fa-<?php echo esc_attr($icon); ?>"></i>
 				</div>
-				<h4 class="card-title mt-3 mb-2 ms-3"> '.__($title, "escrowtics").'';
-				if(!empty($subtitle)){  $output .='<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$subtitle.'</small>'; }	
-				$output .='
-				</h4>
-			</div>
-			<div class="card-body p-3">';
-				if($type == 'table'){
-				   $output .='	
-					<div id="'.$id.'">
-						'.escrot_loader(__("Loading..", "escrowtics")).'
-					</div>';
-				}
-				if($type == 'chart'){
-					 if($count > 0) {
-					   $output .='										 
-						<div style="height: '.$box_ht.'" id="'.$id.'" class="ct-chart">
-							'.escrot_loader(__("Loading..", "escrowtics")).'
-						</div>';
-					} else {  
-						$output .='<h4 style="height: '.$box_ht.'" class="text-light text-center pt-5">'.__("Not enough data to draw chart", "escrowtics").'</h4>'; 
-					}
-				}
-		  $output .='		
-			</div>
-		 </div>
-	  </div>';
-	  
-	return trim($output);
-}
-
-
-//dsiplay chart and table stats
-function escrot_tab_stat_chart_tbl($data) {
-	$output ='';
-	$output .='
-	  <div class="'.$data["col_class"].'" id="'.$data["id"].'">
-		<div class="card card-chart">
-			<div class="card-header card-header-icon card-header-'.$data["color"].'">
-				<div class="card-icon">
-				   <i class="fas fa-'.$data["icon"].'"></i>
-				</div>
-				<h4 class="card-title mt-3 mb-2 ms-3"> '.$data["title"];
-					if(!empty($data["subtitle"])){ $output .='<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$data["subtitle"].'</small>'; }	
-			$output .='
+				<h4 class="card-title mt-3 mb-2 ms-3">
+					<?php echo $title; ?>
+					<?php if (!empty($subtitle)) : ?>
+						<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $subtitle; ?></small>
+					<?php endif; ?>
 				</h4>
 			</div>
 			<div class="card-body p-3">
-				<div class="col-xs-12" id="escrot-tabs">
-					<nav>
-						<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">';
-						foreach($data["tabs"] as $title => $val){
-							$active_class = $val["active"]? " show active" : "";
-							$output .=' <a class="nav-item nav-link'.$active_class.'" data-toggle="tab" href="#'.$val["id"].'-tab" role="tab" aria-selected="'.$val["selected"].'">
-							'.$val["title"].'</a>';
-						}
-						$output .='</div>
-					</nav>
-					<div class="tab-content py-3 px-3 px-sm-0">';
-						foreach($data["tabs"] as $title => $val){
-							$active_class = $val["active"]? " show active" : ""; 
-							$output .='<div class="tab-pane fade'.$active_class.'" id="'.$val["id"].'-tab" role="tabpanel">';
-							
-								if($val["type"] == 'table'){
-								   $output .='	
-									<div id="'.$val["id"].'">
-										'.escrot_loader(__("Loading..", "escrowtics")).'
-									</div>';
-								}
-								if($val["type"] == 'chart'){
-									 if($val["count"] > 0) { 
-									   $output .='										 
-										<div style="height: '.$data["box_ht"].'" id="'.$val["id"].'" class="ct-chart">
-											'.escrot_loader(__("Loading..", "escrowtics")).'
-										</div>';
-									} else {  
-										$output .='<h4 style="height: '.$data["box_ht"].'" class="text-light text-center pt-5">'.__("Not enough data to draw chart", "escrowtics").'</h4>'; 
-									}
-								}
-							$output .='</div>';
-						}
-					$output .='
+				<?php if ($type === 'table') : ?>
+					<div id="<?php echo esc_attr($id); ?>">
+						<?php echo escrot_loader(__('Loading...', 'escrowtics')); ?>
 					</div>
-				</div>
+				<?php elseif ($type === 'chart') : ?>
+					<?php if ($count > 0) : ?>
+						<div style="height: <?php echo intval($box_ht); ?>px;" id="<?php echo esc_attr($id); ?>" class="ct-chart">
+							<?php echo escrot_loader(__('Loading...', 'escrowtics')); ?>
+						</div>
+					<?php else : ?>
+						<h4 style="height: <?php echo intval($box_ht); ?>px;" class="text-light text-center pt-5">
+							<?php echo esc_html__('Not enough data to draw chart', 'escrowtics'); ?>
+						</h4>
+					<?php endif; ?>
+				<?php endif; ?>
 			</div>
-		 </div>
-	  </div>';
-	  
-	return trim($output);
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
 }
 
-//dsiplay box stats
-function escrot_stat_box($id, $count, $sub, $sub_s, $col_class, $color, $icon, $title) {
-	$x = ($count == 1)?  $sub : $sub_s; 
-	$output ='';
-	$output .='
-	  <div class="'.$col_class.'">
-		 <div class="card card-chart mb-2">
-				<div class="card-header card-header-'.$color.' card-header-icon">
-					<div class="card-icon escrot-rounded">
-					  <i class="fas fa-'.$icon.'"></i>
-					</div>
-				<div class="text-end pt-1">
-					<p class="card-category text-right text-sm mb-0 text-capitalize">
-						'.$title.'
-					</p>
-					<h4 class="text-right escrot-stats-text mb-4">';
-					
-					if($id == "escrot-stat-total-balance"){ $output .= ESCROT_CURRENCY.' '; }
-					$output .= escrot_minify_count($count).'
-			         </h4>
-				</div>
-			</div>
-			<hr class="dark horizontal my-0">
-			<div class="card-footer p-3">
-				<p class="mb-0"><span class="text-success text-sm font-weight-bolder">
-					'.escrot_minify_count($count).'</span> <span class="text-light text-dark">'.$x.'</span>	
-				</p>						  
-			</div>
-		</div>	
-	  </div>';
-	  
-	return trim($output);
+
+
+//dsiplay chart and table stats
+/**
+ * Display chart and table stats with tabs.
+ *
+ * @param array $data Data array containing configuration for charts, tables, and tabs.
+ * @return string Sanitized HTML output for the tabs, charts, and tables.
+ */
+function escrot_tab_stat_chart_tbl($data) {
+    // Validate required keys in $data
+    $required_keys = ['col_class', 'id', 'color', 'icon', 'title', 'tabs', 'box_ht'];
+    foreach ($required_keys as $key) {
+        if (!isset($data[$key])) {
+            return ''; // Exit early if required data is missing.
+        }
+    }
+
+    ob_start(); // Start output buffering
+    ?>
+    <div class="<?php echo esc_attr($data['col_class']); ?>" id="<?php echo esc_attr($data['id']); ?>">
+        <div class="card card-chart">
+            <div class="card-header card-header-icon card-header-<?php echo esc_attr($data['color']); ?>">
+                <div class="card-icon">
+                    <i class="fas fa-<?php echo esc_attr($data['icon']); ?>"></i>
+                </div>
+                <h4 class="card-title mt-3 mb-2 ms-3">
+                    <?php echo esc_html($data['title']); ?>
+                    <?php if (!empty($data['subtitle'])) : ?>
+                        <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo esc_html($data['subtitle']); ?></small>
+                    <?php endif; ?>
+                </h4>
+            </div>
+            <div class="card-body p-3">
+                <div class="col-xs-12" id="escrot-tabs">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <?php foreach ($data['tabs'] as $tab) : ?>
+                                <?php
+                                if (!isset($tab['id'], $tab['title'], $tab['active'], $tab['selected'])) {
+                                    continue;
+                                }
+                                $active_class = !empty($tab['active']) ? ' show active' : '';
+                                ?>
+                                <a class="nav-item nav-link<?php echo esc_attr($active_class); ?>"
+                                   data-toggle="tab"
+                                   href="#<?php echo esc_attr($tab['id']); ?>-tab"
+                                   role="tab"
+                                   aria-selected="<?php echo esc_attr($tab['selected']); ?>">
+                                    <?php echo esc_html($tab['title']); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </nav>
+                    <div class="tab-content py-3 px-3 px-sm-0">
+                        <?php foreach ($data['tabs'] as $tab) : ?>
+                            <?php
+                            if (!isset($tab['id'], $tab['type'], $tab['active'], $tab['count'])) {
+                                continue;
+                            }
+                            $active_class = !empty($tab['active']) ? ' show active' : '';
+                            ?>
+                            <div class="tab-pane fade<?php echo esc_attr($active_class); ?>"
+                                 id="<?php echo esc_attr($tab['id']); ?>-tab"
+                                 role="tabpanel">
+                                <?php if ($tab['type'] === 'table') : ?>
+                                    <div id="<?php echo esc_attr($tab['id']); ?>">
+                                        <?php echo escrot_loader(__('Loading...', 'escrowtics')); ?>
+                                    </div>
+                                <?php elseif ($tab['type'] === 'chart') : ?>
+                                    <?php if ((int)$tab['count'] > 0) : ?>
+                                        <div style="height: <?php echo esc_attr($data['box_ht']); ?>;"
+                                             id="<?php echo esc_attr($tab['id']); ?>"
+                                             class="ct-chart">
+                                            <?php echo escrot_loader(__('Loading...', 'escrowtics')); ?>
+                                        </div>
+                                    <?php else : ?>
+                                        <h4 style="height: <?php echo esc_attr($data['box_ht']); ?>;"
+                                            class="text-light text-center pt-5">
+                                            <?php esc_html_e('Not enough data to draw chart', 'escrowtics'); ?>
+                                        </h4>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    return trim(ob_get_clean()); // Return the buffered content.
 }
+
+
+
+/**
+ * Generate a statistics box.
+ *
+ * @param string $id        The ID of the stat box.
+ * @param int    $count     The numerical value to display.
+ * @param string $sub       Singular label for the stat (e.g., "Transaction").
+ * @param string $sub_s     Plural label for the stat (e.g., "Transactions").
+ * @param string $col_class CSS class for the column container.
+ * @param string $color     Color theme for the stat box.
+ * @param string $icon      Font Awesome icon class for the box.
+ * @param string $title     Title of the stat box.
+ *
+ * @return string Sanitized HTML output for the stat box.
+ */
+function escrot_stat_box($id, $count, $sub, $sub_s, $col_class, $color, $icon, $title) {
+    $label = ($count == 1) ? $sub : $sub_s;
+
+    ob_start(); // Start output buffering
+    ?>
+    <div class="<?php echo esc_attr($col_class); ?>">
+        <div class="card card-chart mb-2">
+            <div class="card-header card-header-<?php echo esc_attr($color); ?> card-header-icon">
+                <div class="card-icon escrot-rounded">
+                    <i class="fas fa-<?php echo esc_attr($icon); ?>"></i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="card-category text-right text-sm mb-0 text-capitalize">
+                        <?php echo esc_html($title); ?>
+                    </p>
+                    <h4 class="text-right escrot-stats-text mb-4">
+                        <?php if ($id === 'escrot-stat-total-balance') : ?>
+                            <?php echo esc_html(ESCROT_CURRENCY); ?>
+                        <?php endif; ?>
+                        <?php echo esc_html(escrot_minify_count($count)); ?>
+                    </h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">
+                    <span class="text-success text-sm font-weight-bolder">
+                        <?php echo esc_html(escrot_minify_count($count)); ?>
+                    </span>
+                    <span class="text-light text-dark"><?php echo esc_html($label); ?></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php
+    return trim(ob_get_clean()); 
+}
+
 
 
 //Ajax loader
@@ -500,38 +555,53 @@ function escrot_light_svg(){
 }
 
 //Display Collapsable contents
-function escrot_callapsable_dialogs(array $dialogs){
-
-    if(ESCROT_PLUGIN_INTERACTION_MODE !== "modal") {  
+/**
+ * Display collapsable dialog content cards.
+ *
+ * @param array $dialogs Array of dialog configurations.
+ * @return string Sanitized HTML output for collapsable dialogs.
+ */
+function escrot_callapsable_dialogs(array $dialogs) {
+    if (ESCROT_PLUGIN_INTERACTION_MODE === 'modal') {
+        return '';
+    }
 	
-	    foreach($dialogs as $dialog){ ?>     
-  
-			<div class="card shadow-lg mb-3 escrot-admin-forms collapse" id="<?php echo $dialog['id'] ?>">
-			  <div class='card-header'>
-				<h3 class='text-light card-title text-center'>
-				   <?php 
-					 echo $dialog['title']; 
-					 if(!empty($dialog['header'])){
-						include ESCROT_PLUGIN_PATH."templates/admin/template-parts/".$dialog['header']; 
-					}
-				   ?>
-				</h3>
-				<span class="float-right">
-				   <button type="button" class="close escrot-close-btn text-light" data-toggle="collapse" 
-				   data-target="#<?php echo $dialog['id']; ?>">
-					  <span aria-hidden="true"><b>&times;</b></span>
-				   </button>
-				</span>
-			</div>
-			<div class="card-body <?= $dialog['type']== 'data'? 'p-5' : ''; ?>">
-			  <div <?php if(!empty($dialog['data_id'])){ echo 'id="'.$dialog["data_id"].'"'; } ?>>
-				<?php 
-					if(!empty($dialog['callback'])){
-						include ESCROT_PLUGIN_PATH."templates/forms/".$dialog['callback']; 
-					}
-				?>
-			  </div>
-			 </div>
-			</div>
-			
-<?php } } } ?>
+    foreach ($dialogs as $dialog) {
+        $dialog_id = esc_attr($dialog['id']);
+        $title = esc_html($dialog['title']);
+        $data_id = !empty($dialog['data_id']) ? esc_attr($dialog['data_id']) : '';
+        $type_class = isset($dialog['type']) && $dialog['type'] === 'data' ? 'p-5' : '';
+        $header_path = !empty($dialog['header']) ? ESCROT_PLUGIN_PATH . "templates/admin/template-parts/" . sanitize_file_name($dialog['header']) : '';
+        $callback_path = !empty($dialog['callback']) ? ESCROT_PLUGIN_PATH . "templates/forms/" . sanitize_file_name($dialog['callback']) : '';
+
+        ?>
+        <div class="card shadow-lg mb-3 escrot-admin-forms collapse" id="<?php echo $dialog_id; ?>">
+            <div class="card-header">
+                <h3 class="text-light card-title text-center">
+                    <?php echo $title; ?>
+                    <?php if (!empty($header_path) && file_exists($header_path)) : ?>
+                        <?php include $header_path; ?>
+                    <?php endif; ?>
+                </h3>
+                <span class="float-right">
+                    <button type="button" class="close escrot-close-btn text-light" data-toggle="collapse"
+                            data-target="#<?php echo $dialog_id; ?>">
+                        <span aria-hidden="true"><b>&times;</b></span>
+                    </button>
+                </span>
+            </div>
+            <div class="card-body <?php echo esc_attr($type_class); ?>">
+                <div <?php echo !empty($data_id) ? 'id="' . $data_id . '"' : ''; ?>>
+                    <?php if (!empty($callback_path) && file_exists($callback_path)) : ?>
+                        <?php include $callback_path; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+
+}
+
+
+

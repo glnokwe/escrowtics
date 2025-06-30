@@ -1,6 +1,6 @@
 === Escrowtics ===
-Contributors: nguyano, LechTech
-Donate link: https://https://www.lechtech.net
+Contributors: Nokwe
+Donate link: #
 Tags: comments, spam
 Requires at least: 3.0.1
 Tested up to: 3.4

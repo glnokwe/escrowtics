@@ -1,114 +1,88 @@
-=== Escrowtics ===
-Contributors: Nokwe
+\== Escrowtics ==
+Contributors: Godlove Nokwe
 Donate link: #
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Tags: escrow, payments, PayPal, marketplace, transactions, WordPress plugin
+Requires at least: 5.6
+Tested up to: 6.5
+Stable tag: 1.0.0
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+A simple yet powerful escrow plugin for WordPress to manage secure transactions between users.
 
-== Description ==
+\== Description ==
+Escrowtics is a WordPress plugin that provides seamless escrow functionality for marketplaces and service-based platforms. With integrated PayPal support, real-time status updates, role-based workflows, and dispute resolution tools, Escrowtics ensures both buyers and sellers are protected during online transactions.
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+**Key Features:**
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+* Secure payment handling using PayPal & Bitcoin (via blokonomics) integration
+* Role-based transaction control (buyer, seller, admin)
+* Escrow wallet balances and automatic updates
+* Admin approval and dispute management interfaces
+* AJAX-powered forms and SweetAlert confirmation dialogs
+* Email notifications with custom branding and HTML formatting
+* Custom database tables for full control and scalability
 
-A few notes about the sections above:
+Built with performance and simplicity in mind, Escrowtics requires no third-party services or external webhook configuration. It is ideal for freelancers, service providers, and online marketplaces.
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+\== Installation ==
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+1. Upload the `escrowtics` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Navigate to the "Escrowtics" settings page to configure PayPal credentials and transaction roles
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in escrow to eliminate any doubt.
+\== Frequently Asked Questions ==
+\= How do I enable PayPal payments? =
+Go to Escrowtics > Settings and enter your PayPal API credentials (client ID and secret).
 
-== Installation ==
+\= Does it work with custom post types? =
+Escrowtics operates independently of WordPress post types, using its own database structure.
 
-This section describes how to install the plugin and get it working.
+\= Can I customize emails sent by the plugin? =
+Yes, email messages use HTML formatting and include your site branding.
 
-e.g.
+\== Screenshots ==
 
-1. Upload `escrowtics.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Admin dashboard for managing escrow transactions
+2. Seller's view of pending approvals and received funds
+3. Buyer's interface for initiating escrow payment
+4. SweetAlert confirmation dialog before submitting forms
 
-== Frequently Asked Questions ==
+\== Changelog ==
+\= 1.0.0 =
 
-= A question that someone might have =
+* Initial release
+* Bitcoin & PayPal integration with sandbox/live mode
+* Role-based workflow with buyer/seller/admin actions
+* Admin dispute panel with status updates
+* Responsive and AJAX-enhanced user forms
 
-An answer to that question.
+\== Upgrade Notice ==
+\= 1.0.0 =
+First official release with full PayPal support and escrow management capabilities.
 
-= What about foo bar? =
+\== Arbitrary section ==
+For developers: Escrowtics uses `escrowtics_` prefixed hooks and filters. Custom actions can be added to extend form behavior, emails, or transaction logic. The plugin follows WordPress coding standards and is compatible with multisite environments.
 
-Answer to foo bar dilemma.
-
-== Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
-
-== Changelog ==
-
-= 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
+\== A brief Markdown Example ==
 Ordered list:
 
-1. Some feature
-1. Another feature
-1. Something else about the plugin
+1. Secure payment holding
+2. Admin-controlled release or refund
+3. Dispute escalation process
 
-Unescrowed list:
+Unordered list:
 
-* something
-* something else
-* third thing
+* No third-party service required
+* Fully responsive interface
+* Developer-friendly architecture
 
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
+Here's a link to [WordPress](https://wordpress.org/) and one to [Markdown's Syntax Documentation][markdown syntax].
 
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
+[markdown syntax]: http://daringfireball.net/projects/markdown/syntax "Markdown is what the parser uses to process much of the readme file"
 
 Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
 
-`<?php code(); // goes in backticks ?>`
+> Asterisks for *emphasis*. Double it up for **strong**.
+
+`<?php do_action('escrowtics_custom_action'); ?>`

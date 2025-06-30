@@ -2,10 +2,10 @@
 
 /*
  * Plugin Name: Escrowtics
- * Plugin URI: https://escrowtics.lechtech.net
+ * Plugin URI: #
  * Description: Safe Peer-to-Peer Escrow Payment Wordpress Plugin.
- * Author: LechTech
- * Author URI: https://www.lechtech.net
+ * Author: Godlove Nokwe
+ * Author URI: #
  * Text Domain: escrowtics
  * Domain Path: /languages
  * Version: 1.0.0

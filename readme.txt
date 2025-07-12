@@ -30,6 +30,7 @@ Built with performance and simplicity in mind, Escrowtics requires no third-part
 1. Upload the `escrowtics` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Navigate to the "Escrowtics" settings page to configure PayPal credentials and transaction roles
+4. Add the shortcode " [escrot_account] " to your desired frontend page (empty full width page)
 
 \== Frequently Asked Questions ==
 \= How do I enable PayPal payments? =

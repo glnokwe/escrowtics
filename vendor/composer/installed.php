@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'escrowtics/escrowtics',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'e1fe5fd8a92cabda72027f0a2043a6ba7231ae90',
+        'type' => 'project',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'chillerlan/php-qrcode' => array(
+            'pretty_version' => 'v5.0.x-dev',
+            'version' => '5.0.9999999.9999999-dev',
+            'reference' => '75a29186e62e448d32f18e0d162574af3290e24d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../chillerlan/php-qrcode',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'chillerlan/php-settings-container' => array(
+            'pretty_version' => '2.1.6',
+            'version' => '2.1.6.0',
+            'reference' => '5553558bd381fce5108c6d0343c12e488cfec6bb',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../chillerlan/php-settings-container',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'escrowtics/escrowtics' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'e1fe5fd8a92cabda72027f0a2043a6ba7231ae90',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

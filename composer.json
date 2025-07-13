@@ -1,0 +1,25 @@
+{
+    "name": "escrowtics/escrowtics",
+    "description": "Safe Peer-to-Peer Escrow Payment Wordpress Plugin",
+    "type": "project",
+    "require": {
+        "chillerlan/php-qrcode": "v5.0.x-dev"
+    },
+    "license": "GPL",
+    "autoload": {
+		"psr-4": {"Escrowtics\\": "./includes"}, 
+		"files": [
+					"includes/Base/CoreHelper.php", 
+					"includes/Database/StaticDBFunctions.php",
+				    "includes/base/LogsNotifications.php",
+					"includes/Email/Emails.php"
+				  ]
+	},
+    "authors": [
+        {
+            "name": "Godlove N. Nokwe",
+            "email": "nokus.dev"
+        }
+    ],
+    "minimum-stability": "dev"
+}

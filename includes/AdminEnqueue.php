@@ -68,13 +68,9 @@ class AdminEnqueue {
     public function enqueueStyles() {
         // Styles for all Escrowtics admin pages.
         if ($this->isEscrotPage('escrowtics')) {
-            $styles = [
-                'escrot-mdb-admin-css'     => 'lib/bootstrap/css/m-dash.min.css',
-                'escrot-choices-admin-css' => 'lib/bootstrap/css/choices.min.css',
-                'escrot-chat-admin-css'    => 'assets/css/escrot-chat.css',
+           $styles = [
                 'escrot-fa-admin-css'      => 'lib/fontawesome/css/all.min.css',
-                'escrot-datatb-admin-css'  => 'lib/jquery/css/jquery.dataTables.min.css',
-                'escrot-admin-css'         => 'assets/css/escrot-admin.css',
+                'escrot-admin-css'         => 'assets/css/admin/admin-purged.min.css',
             ];
 
             foreach ($styles as $handle => $path) {
@@ -85,8 +81,8 @@ class AdminEnqueue {
             wp_add_inline_style('escrot-admin-css', $this->getInlineAdminCss());
         }
 
-        // General WordPress admin styles for all pages.
-        wp_enqueue_style('escrot-wp-admin', ESCROT_PLUGIN_URL . 'assets/css/escrot-wp-admin-styles.css', [], ESCROT_VERSION);
+        // Enqueue WordPress admin styles twicks.
+        wp_enqueue_style('escrot-wp-admin', ESCROT_PLUGIN_URL . 'assets/css/admin/wp-admin-styles.css', [], ESCROT_VERSION);
     }
 
     /**
@@ -192,7 +188,7 @@ class AdminEnqueue {
 
 		// 3) Plugin Sidebar top offset based on bar/menu
 		if ($hideBar) {
-			$blocks[] = '.folded .sidebar, .sidebar { top: 0; }';
+			$blocks[] = '.folded .sidebar, .sidebar { top: 2px; }';
 		} elseif ($hideMenu) {
 			$blocks[] = '.folded .sidebar, .sidebar { top: 2.6%; }';
 		}

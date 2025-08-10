@@ -1536,6 +1536,12 @@ table.dataTable thead > tr > th.sorting_desc {
     background: #0b1836 !important;
     color: #fff 
 }
+.swal2-confirm-red {
+    background-color: #f44336 !important;
+    border: none !important;
+    color: #fff !important;
+}
+
 
 /** Override default wp styles **/
 

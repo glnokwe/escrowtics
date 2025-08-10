@@ -27,12 +27,9 @@ class PublicEnqueue {
      * Register frontend stylesheets.
      */
     public function enqueueStyles() {
-        $styles = [
-            'escrot-md-pub-css'   => 'lib/bootstrap/css/m-design.min.css',
-            'escrot-dt-pub-css'   => 'lib/jquery/css/jquery.dataTables.min.css',
-            'escrot-chat-pub-css' => 'assets/css/escrot-chat.css',
-            'escrot-fa-pub-css'   => 'lib/fontawesome/css/all.min.css',
-            'escrot-pub-css'      => 'assets/css/escrot-public.css',
+       $styles = [
+            'escrot-fa-pub-css' => 'lib/fontawesome/css/all.min.css',
+			'escrot-pub-css'    => 'assets/css/frontend/public-purged.min.css'
         ];
 
         foreach ($styles as $handle => $path) {

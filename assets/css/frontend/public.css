@@ -290,8 +290,17 @@ td {
 	font-family: var(--escrot-font-family);
 }
 
+.swal2-styled.swal2-confirm {
+  background-color: var(--escrot-primary-color);
+  border-radius: 30px !important;
+}
+
 .swal2-styled.swal2-confirm, .swal2-styled.swal2-cancel {
   text-transform: capitalize;
+}
+
+.swal2-styled.swal2-cancel {
+  border-radius: 30px !important;
 }
 
 

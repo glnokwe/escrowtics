@@ -161,18 +161,9 @@ $menus = [
 						[
 						  "li-classes" => "",  "li-id" => "EscrotAboutUs",
 						  "type" => "normal",
-						  "href" => "#",
+						  "href" => "https://lechtech.net/escrowtics",
 						  "icon" => "circle-info",
 						  "title" => __("About Escrowtics", "escrowtics"),
-						  "collapse-id" => "",
-						  "submenus" => []
-						],
-						[
-						  "li-classes" => "",  "li-id" => "EscrotShortCode",
-						  "type" => "normal",
-						  "href" => "#",
-						  "icon" => "expand",
-						  "title" => __("Shortcodes", "escrowtics"),
 						  "collapse-id" => "",
 						  "submenus" => []
 						],
@@ -180,7 +171,7 @@ $menus = [
 						[
 						  "li-classes" => "",  "li-id" => "EscrotDocumentation",
 						  "type" => "normal",
-						  "href" => "#",
+						  "href" => "https://lechtech.net/escrowtics-docs",
 						  "icon" => "list",
 						  "title" => __("Documentation", "escrowtics"),
 						  "collapse-id" => "",

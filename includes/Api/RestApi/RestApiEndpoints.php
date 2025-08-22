@@ -84,7 +84,7 @@ class RestApiEndpoints {
 			return new \WP_Error('missing_api_key', __('Access to requested data has been restricted.', 'escrowtics'), ['status' => 403]);
 		}
 
-		if (!defined('ESCROT_ENABLE_REST_API_KEY') || !ESCROT_ENABLE_REST_API_KEY) {
+		if (escrot_option( 'enable_rest_api_key' )) {
 			return true;
 		}
 
@@ -158,9 +158,9 @@ class RestApiEndpoints {
 	public function generateRestApiKey() {
 		escrot_verify_permissions('manage_options');
 
-		if (!(defined('ESCROT_ENABLE_REST_API') && ESCROT_ENABLE_REST_API)) {
+		/* if ( escrot_option( 'enable_rest_api' ) ) {
 			wp_send_json_error(['message' => __('REST API functionality is disabled.', 'escrowtics')]);
-		}
+		} */
 
 		if (!current_user_can('edit_user', get_current_user_id())) {
 			wp_send_json_error(['message' => __('Unauthorized', 'escrowtics')], 403);
@@ -181,7 +181,7 @@ class RestApiEndpoints {
 	public function generateRestApiUrl() {
 		escrot_verify_permissions('manage_options');
 
-		if (!(defined('ESCROT_ENABLE_REST_API') && ESCROT_ENABLE_REST_API)) {
+		if (escrot_option( 'enable_rest_api' )) {
 			wp_send_json_error(['message' => __('REST API functionality is disabled.', 'escrowtics')]);
 		}
 
@@ -211,7 +211,7 @@ class RestApiEndpoints {
 	public function validateApiKey() {
 		$api_key = $_SERVER['HTTP_X_API_KEY'] ?? '';
 
-		if (empty($api_key) || $api_key !== ESCROT_REST_API_KEY) {
+		if (empty($api_key) || $api_key !== escrot_option( 'rest_api_key' ) ) {
 			return new \WP_Error('invalid_api_key', __('Invalid API key.', 'escrowtics'), ['status' => 403]);
 		}
 

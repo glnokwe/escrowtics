@@ -75,6 +75,25 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right notif-content" aria-labelledby="navbarDropdownMenuLink"></div>
                 </li>
+				<?php $current_user_id = get_current_user_id(); ?>
+				<li class="nav-item px-3 dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="text-light fa fa-user fnehd-nav-icon"></i>
+				  </a>
+				  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUserMenu">
+				    <?php if( escrot_is_front_user() ): ?>
+						<a class="dropdown-item" 
+						   href="<?php echo esc_url( admin_url( 'admin.php?page=escrowtics-user-profile&user_id=' . $current_user_id ) ); ?>">
+						  <i class="fa-regular fa-user"></i> &nbsp; <?php esc_html_e( 'Profile', 'escrowtics' ); ?>
+						</a>
+					<?php endif; ?>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" 
+					   href="<?php echo esc_url( wp_logout_url( admin_url() ) ); ?>">
+					  <i class="fa-solid fa-arrow-right-from-bracket"></i> &nbsp; <?php esc_html_e( 'Logout', 'escrowtics' ); ?>
+					</a>
+				  </div>
+				</li>
             </ul>
         </div>
     </div>

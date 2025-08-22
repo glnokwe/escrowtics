@@ -1224,6 +1224,17 @@ label a.infopop, label div.popover.fade.in {
     }
 
 
+	.escrot-form-wrap {
+	    font-size: 14px;
+		max-width: 350px;
+		width: 350px;
+		margin: auto;
+	}
+	
+	.escrot-h2-text{
+		font-size: 1.4em !important;
+	}
+
 
 }
 

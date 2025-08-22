@@ -28,11 +28,11 @@ $login_fields = [
 ];
 ?>
 
-<div class="escrot-form-wrap d-md-flex rounded bg-transparent">
-    <!-- Left Section -->
-    <div class="escrot-text-wrap escrot-rounded-left text-center d-flex align-items-center shelter-md-last">
-        <div class="text w-100">
-            <h2><?= esc_html(__('Not Registered?', 'escrowtics')); ?></h2>
+<div class="escrot-form-wrap d-md-flex escrot-rounded bg-transparent">
+    <!-- SignUp Section -->
+    <div class="escrot-text-wrap escrot-rounded text-center d-flex align-items-center">
+        <div class="text w-100 p-5">
+            <h2 class="escrot-h2-text"><?= esc_html(__('Not Registered?', 'escrowtics')); ?></h2>
             <p class="text-light"><?= esc_html(__('Signup for an Escrow Account Rightaway!', 'escrowtics')); ?></p>
             <a href="<?= esc_url(add_query_arg(['endpoint' => 'user_signup'], escrot_current_url())); ?>" 
                class="btn btn-white btn-round btn-outline-white">
@@ -42,7 +42,7 @@ $login_fields = [
     </div>
     
     <!-- Login Form Section -->
-    <div class="escrot-login-wrap escrot-rounded-right p-3 pr-5 pl-5">
+    <div class="escrot-login-wrap escrot-rounded p-3 pr-5 pl-5">
         <div class="d-flex">
             <div class="w-100">
                 <h3 class="text-dark mb-4"><?= esc_html(escrot_option('login_form_label')); ?></h3>

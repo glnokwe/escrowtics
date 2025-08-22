@@ -24,7 +24,7 @@ class RestApiActions extends RestApiEndpoints {
 
 		$this->endpoints = apply_filters('escrot_rest_api_endpoints', $this->endpoints);
 
-		if ($this->isInternalRequest() || (defined('ESCROT_ENABLE_REST_API') && ESCROT_ENABLE_REST_API)) {
+		if ($this->isInternalRequest() || escrot_option( 'enable_rest_api' ) ) {
 			foreach ($this->endpoints as $endpoint) {
 				if (method_exists($this, $endpoint)) {
 					add_action('rest_api_init', [$this, $endpoint]);

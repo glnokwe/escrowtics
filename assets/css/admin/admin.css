@@ -835,6 +835,11 @@ div.dt-container .dt-input {
     border-radius: 50%;
 }
 
+.card .card-header.card-header-icon .card-icon{
+	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0),0 7px 10px -5px rgba(0, 0, 0, 0.4);
+	background: #6183a4;
+}
+
 .card .card-header.card-header-icon .card-title {
     color: #8b92a9 !important;
 }

@@ -158,9 +158,9 @@ class RestApiEndpoints {
 	public function generateRestApiKey() {
 		escrot_verify_permissions('manage_options');
 
-		/* if ( escrot_option( 'enable_rest_api' ) ) {
+		if ( escrot_option( 'enable_rest_api' ) ) {
 			wp_send_json_error(['message' => __('REST API functionality is disabled.', 'escrowtics')]);
-		} */
+		}
 
 		if (!current_user_can('edit_user', get_current_user_id())) {
 			wp_send_json_error(['message' => __('Unauthorized', 'escrowtics')], 403);
